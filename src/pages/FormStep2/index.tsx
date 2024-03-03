@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useEffect } from 'react'
 
 import { Theme } from '../../components/Theme'
@@ -12,11 +12,15 @@ export const FormStep2 = () => {
     const { state, dispatch } = useForm()
 
     useEffect(() => {
-        dispatch({
-            type: FormActions.setCurrentStep,
-            payload: 2
-        })
-    })
+        if (state.name === '') {
+            navigate('/')
+        } else {
+            dispatch({
+                type: FormActions.setCurrentStep,
+                payload: 2
+            })
+        }
+    }, [])
 
     const handleNextStep = () => {
         if (state.name !== '') {
@@ -27,26 +31,36 @@ export const FormStep2 = () => {
 
     }
 
+    const setLevel = (level: number) => {
+        dispatch({
+            type: FormActions.setLevel,
+            payload: level
+        })
+    }
+
     return (
         <Theme>
             <C.Container>
                 <p>Passo 2/3</p>
-                <h1>Vamos começar com os seu nome</h1>
-                <p>Preencha o campo abaixo com seu completo</p>
+                <h1>{state.name}, o que melhor descreve voçê?</h1>
+                <p>Escolha a opção que descreve voçê profissionalmente.</p>
                 <hr />
                 <SelectOption
                     title="Sou Iniciante"
                     description="Começei a programar a menos de 2 anos"
                     icon="🥳"
                     selected={state.level === 0}
+                    onClick={() => setLevel(0)}
                 />
                 <SelectOption
                     title="Sou Programador"
                     description="Já programo há 2 anos ou mais"
                     icon="🤓"
                     selected={state.level === 1}
+                    onClick={() => setLevel(1)}
                 />
 
+                <Link to='/' className='backButton'>Voltar</Link >
                 <button onClick={handleNextStep}>Próximo</button>
             </C.Container>
         </Theme>

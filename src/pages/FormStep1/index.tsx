@@ -16,7 +16,7 @@ export const FormStep1 = () => {
             type: FormActions.setCurrentStep,
             payload: 1
         })
-    })
+    }, [])
 
     const handleNextStep = () => {
         if (state.name !== '') {

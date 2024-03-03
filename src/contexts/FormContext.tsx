@@ -47,11 +47,11 @@ export enum FormActions {
 const formReducer = (state: State, action: Action) => {
     switch (action.type) {
         case FormActions.setCurrentStep:
-            return { ...state, currenStep: action.payload }
+            return { ...state, currentStep: action.payload }
         case FormActions.setName:
             return { ...state, name: action.payload }
         case FormActions.setLevel:
-            return { ...state, lavel: action.payload }
+            return { ...state, level: action.payload }
         case FormActions.setEmail:
             return { ...state, email: action.payload }
         case FormActions.setGithub:

@@ -4,12 +4,13 @@ type Props = {
     title: string
     description: string
     icon: string
+    selected: boolean
 
 }
 
-export const SelectOption = ({ title, description, icon }: Props) => {
+export const SelectOption = ({ title, description, icon, selected }: Props) => {
     return (
-        <C.Container>
+        <C.Container selected={selected}>
             <C.Icon>{icon}</C.Icon>
             <C.Info>
                 <C.Title>{title}</C.Title>

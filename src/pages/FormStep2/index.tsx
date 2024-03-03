@@ -38,11 +38,13 @@ export const FormStep2 = () => {
                     title="Sou Iniciante"
                     description="Começei a programar a menos de 2 anos"
                     icon="🥳"
+                    selected={state.level === 0}
                 />
                 <SelectOption
                     title="Sou Programador"
                     description="Já programo há 2 anos ou mais"
                     icon="🤓"
+                    selected={state.level === 1}
                 />
 
                 <button onClick={handleNextStep}>Próximo</button>
